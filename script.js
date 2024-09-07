@@ -1,0 +1,31 @@
+var form = document.getElementById('resumeForm');
+var nameInput = document.getElementById('name');
+var emailInput = document.getElementById('email');
+var phoneInput = document.getElementById('phone');
+var aboutInput = document.getElementById('about');
+var educationInput = document.getElementById('education');
+var experienceInput = document.getElementById('experience');
+var skillsInput = document.getElementById('skills');
+var resumeName = document.getElementById('resumeName');
+var resumeEmail = document.getElementById('resumeEmail');
+var resumePhone = document.getElementById('resumePhone');
+var resumeAbout = document.getElementById('resumeAbout').getElementsByTagName('p')[0];
+var resumeEducation = document.getElementById('resumeEducation').getElementsByTagName('p')[0];
+var resumeExperience = document.getElementById('resumeExperience').getElementsByTagName('p')[0];
+var skillsList = document.getElementById('skillsList');
+form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    resumeName.innerText = nameInput.value;
+    resumeEmail.innerText = "Email: " + emailInput.value;
+    resumePhone.innerText = "Phone: " + phoneInput.value;
+    resumeAbout.innerText = aboutInput.value;
+    resumeEducation.innerText = educationInput.value;
+    resumeExperience.innerText = experienceInput.value;
+    skillsList.innerHTML = '';
+    var skills = skillsInput.value.split(',');
+    skills.forEach(function (skill) {
+        var li = document.createElement('li');
+        li.innerText = skill.trim();
+        skillsList.appendChild(li);
+    });
+});
